@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_jabatan');
             $table->foreign('id_jabatan')->references('id')->on('jabatan');
-            $table->unsignedBigInteger('id_gaji');
-            $table->foreign('id_gaji')->references('id')->on('gaji');
             $table->string('nama_lengkap');
             $table->enum('jenis_kelamin', ['P', 'W']);
             $table->string('alamat');

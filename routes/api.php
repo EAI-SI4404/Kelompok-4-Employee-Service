@@ -21,21 +21,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/karyawan/getAll', [KaryawanController::class, 'getAllEmployee']);
 Route::get('/karyawan/{id}', [KaryawanController::class, 'getEmployeeById']);
 Route::post('/karyawan/create', [KaryawanController::class, 'addEmployee']);
-Route::post('/karyawan/update/{id}', [KaryawanController::class, 'updateEmployee']);
-Route::post('/karyawan/delete/{id}', [KaryawanController::class, 'deleteEmployee']);
+Route::put('/karyawan/update/{id}', [KaryawanController::class, 'updateEmployee']);
+Route::delete('/karyawan/delete/{id}', [KaryawanController::class, 'deleteEmployee']);
 
 // Jabatan
 Route::get('/jabatan/getAll', [JabatanController::class, 'getAllJabatan']);
 Route::get('/jabatan/{id}', [JabatanController::class, 'getJabatanById']);
 Route::post('/jabatan/create', [JabatanController::class, 'addJabatan']);
-Route::post('/jabatan/update/{id}', [JabatanController::class, 'updateJabatan']);
-Route::post('/jabatan/delete/{id}', [JabatanController::class, 'deleteJabatan']);
+Route::put('/jabatan/update/{id}', [JabatanController::class, 'updateJabatan']);
+Route::delete('/jabatan/delete/{id}', [JabatanController::class, 'deleteJabatan']);
 
 // Gaji
-Route::get('/gaji/getAll', [GajiController::class, 'getAllGaji']);
-Route::get('/karyawan/{id}/gaji', [GajiController::class, 'getGajiKaryawan']);
-
-
-// Route::middleware('auth:sanctum')->group(function() {
-//     Route::get('/karyawan/getAll', [KaryawanController::class, 'getAll']);
-// });
+Route::get('/gaji/getAllHarian', [GajiController::class, 'getAllGajiHarian']);
+Route::post('/gajiHarian/create', [GajiController::class, 'addGajiHarian']);
+Route::get('/karyawan/{id_karyawan}/gaji/{bulan}', [GajiController::class, 'getGajiBulananKaryawan']);
+// Route::get('/gajiTahunan/{tahun}', [GajiController::class, 'getGajiTahunan']);

@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gaji', function (Blueprint $table) {
+        Schema::create('absen', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_jabatan');
-            $table->foreign('id_jabatan')->references('id')->on('jabatan');
+            $table->time('durasi_kerja');
+            $table->time('jam_masuk');
+            $table->time('jam_keluar');
+            $table->string('keterangan');
+            $table->string('status');
             $table->date('tanggal');
-            $table->integer('total_hari_kerja');
-            $table->float('gaji_kotor');
-            $table->float('gaji_bersih');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gaji');
+        Schema::dropIfExists('absen');
     }
 };
