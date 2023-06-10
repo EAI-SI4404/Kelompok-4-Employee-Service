@@ -34,5 +34,4 @@ Route::delete('/jabatan/delete/{id}', [JabatanController::class, 'deleteJabatan'
 // Gaji
 Route::get('/gaji/getAllHarian', [GajiController::class, 'getAllGajiHarian']);
 Route::post('/gajiHarian/create', [GajiController::class, 'addGajiHarian']);
-Route::get('/karyawan/{id_karyawan}/gaji/{bulan}', [GajiController::class, 'getGajiBulananKaryawan']);
-// Route::get('/gajiTahunan/{tahun}', [GajiController::class, 'getGajiTahunan']);
+Route::get('/karyawan/{id_karyawan}/gaji/{tahun}/{bulan}', [GajiController::class, 'getGajiBulananKaryawan']);

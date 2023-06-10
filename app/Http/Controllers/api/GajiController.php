@@ -35,13 +35,13 @@ class GajiController extends Controller
         $karyawan = Karyawan::where('id', $request->id_karyawan)->with('jabatan')->first();
 
         $gaji_kotor_bulanan = GajiHarian::where('id_karyawan', $request->id_karyawan)
-                            ->where('tanggal', 'LIKE', '%'. $request->bulan. '%')->sum('gaji_harian');
+                            ->where('tanggal', 'LIKE', '%'. $request->tahun. '-' . $request->bulan. '%')->sum('gaji_harian');
         
         if ($gaji_kotor_bulanan) {
             $pajak = $gaji_kotor_bulanan * $karyawan->jabatan->pajak;
             $gaji_bersih_bulanan = $gaji_kotor_bulanan - $pajak;
             $total_hari_kerja = GajiHarian::where('id_karyawan', $request->id_karyawan)
-                                            ->where('tanggal', 'LIKE', '%'. $request->bulan. '%')->count();
+                                            ->where('tanggal', 'LIKE', '%'. $request->tahun. '-' . $request->bulan. '%')->count();
 
             return response()->json([
                 'success' => true,
